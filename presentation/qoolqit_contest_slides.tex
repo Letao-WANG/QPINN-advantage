@@ -68,7 +68,7 @@ and so is the exact solution $u^\ast=A\cos x\cos t$: it is \term{invariant}, so 
   \item \term{Hard constraint.} $u_\theta=A\cos x+(1-\cos t)\,f$ satisfies the boundary
         conditions automatically, with $f=f_\theta$ (\term{plain QPINN}) or
         $f=\tfrac12\big[f_\theta(x,t)+f_\theta(-x,-t)\big]$ (\term{invariant QPINN}).
-  \item \term{Training.} Levenberg--Marquardt minimizes the squared PDE residuals $R_j$ at
+  \item \term{Training.} The Levenberg--Marquardt (LM) optimizer minimizes the squared PDE residuals $R_j$ at
         16 points. Each needed quantity $Q$ ($f$, $R_j$, $\partial R_j/\partial\theta_k$) is a
         weighted sum of model outputs.
   \item \term{Randomized estimation.} The shots for $Q$ are split over its terms, sampled separately and summed with weights. This equals drawing a random circuit before every shot, as in randomized encoding\footnote[frame]{L.~Wang \emph{et al.}, \emph{Fourier symmetrization for geometric quantum machine learning}, arXiv:2610.01874 (2026).}, and may be easier
@@ -100,7 +100,7 @@ total shots                                     & 896k & \textbf{704k} \\
 
 \vspace{0.4ex}
 \raggedright
-{\scriptsize LM stops automatically with the criteria set by us, so the two models run different numbers of iterations.\par}
+{\scriptsize LM optimizer stops automatically with the criteria set by us, so the two models run different numbers of iterations.\par}
 \vspace{0.6ex}
 \footnotesize
 \head{Why it matters}
